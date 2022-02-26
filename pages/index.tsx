@@ -7,7 +7,7 @@ const Home: NextPage = () => {
       <Image
         src="/assets/splash.png"
         alt="primelab"
-        layout="responsive"
+        layout="fill"
       />
     </div>
   )
