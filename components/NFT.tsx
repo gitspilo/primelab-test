@@ -20,7 +20,7 @@ const NFT = () => {
           Create NFT
         </Button>
       </div>
-      <div>
+      <div css={styles.right}> 
         <Image
           src={images.flower}
           alt="primelab"
@@ -47,6 +47,11 @@ const styles = {
   `,
   left: css`
     padding: 10px;
+  `,
+  right: css`
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
   `,
   icon: css`
     position: absolute;

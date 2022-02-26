@@ -26,7 +26,7 @@ const Contact = () => {
           <ChevronRightIcon />
         </IconButton>
       </Stack>
-      <Stack>
+      <Stack alignItems="flex-start">
         <AvatarGroup max={4}>
           <Avatar alt="Remy Sharp" src={images.avatar2} />
           <Avatar alt="Travis Howard" src={images.avatar2} />
