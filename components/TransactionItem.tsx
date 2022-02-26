@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { cx } from "../styles/styling";
 
 interface TransactionItemProps {
   title: string;
@@ -31,9 +32,13 @@ const TransactionItem = ({
       }
     >
       <ListItemIcon>
-        {isIncoming ? <ArrowForwardIcon /> : <ArrowBackIcon />}
+        {isIncoming ? <ArrowBackIcon /> : <ArrowForwardIcon />}
       </ListItemIcon>
-      <ListItemText primary={title} secondary={subTitle} />
+      <ListItemText
+        primary={title}
+        secondary={subTitle}
+        css={cx(styles, { blue: !isIncoming, green: isIncoming })}
+      />
     </ListItem>
   )
 };
@@ -55,4 +60,10 @@ const styles = {
     text-align: center;
     color: #FFFFFF;
   `,
+  blue: css`
+    color: #885FFF;
+  `,
+  green: css`
+    color: #3BD0AC;
+  `
 };
