@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { Global } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
 import { globalStyle } from '../styles/globals';
-import { theme } from '../theme';
+import { theme} from '../styles/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
