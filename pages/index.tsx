@@ -16,7 +16,7 @@ const Splash: NextPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push('/home');
-    }, 1500);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
