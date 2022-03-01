@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import type { NextPage } from 'next';
 import {
   Container,
@@ -10,18 +10,13 @@ import {
   ToggleButton,
   ToggleButtonGroup
 } from '@mui/material';
-import Header from '../components/Header';
-import Contact from '../components/Contact';
-import Apps from '../components/Apps';
-import NFT from '../components/NFT';
-import CollectibleItem from '../components/CollectibleItem';
-import TransactionItem from '../components/TransactionItem';
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-};
+import Header from '../../components/Header';
+import ContactWidget from '../../components/ContactWidget';
+import AppWidget from '../../components/AppWidget';
+import NftWidget from '../../components/NftWidget';
+import CollectibleItem from '../../components/core/CollectibleItem';
+import TransactionItem from '../../components/core/TransactionItem';
+import { TabPanelProps } from  '../../types/global.types';
 
 const Home: NextPage = () => {
   const [value, setValue] = useState(0);
@@ -39,15 +34,15 @@ const Home: NextPage = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <Header />
       <Container>
         <Stack direction="row" spacing={2} pt={2}>
-          <Contact />
-          <Apps />
+          <ContactWidget />
+          <AppWidget />
         </Stack>
         <Stack mt={2} mb={2}>
-          <NFT />
+          <NftWidget />
         </Stack>
         <Tabs
           value={value}
@@ -88,7 +83,7 @@ const Home: NextPage = () => {
           </List>
         </TabPanel>
       </Container>
-    </>
+    </Fragment>
   )
 };
 

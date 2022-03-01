@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { css } from '@emotion/react';
 import {
   Card,
   Stack,
@@ -9,8 +8,9 @@ import {
   Button
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { styles } from './AppWidget.styles';
 
-const Apps = () => {
+export const AppWidget = () => {
   const router = useRouter();
 
   return (
@@ -39,23 +39,4 @@ const Apps = () => {
       </Stack>
     </Card>
   )
-};
-
-export default Apps;
-
-const styles = {
-  card: css`
-    padding: 9px;
-    background: #885FFF;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-  `,
-  title: css`
-    font-family: Manrope;
-    font-size: 16px;
-    line-height: 22px;
-    text-align: center;
-    color: #FFFFFF;
-  `,
 };

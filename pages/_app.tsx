@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
 import { Global } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
-import { globalStyle } from '../styles/globals';
-import { theme} from '../styles/theme';
+import { theme } from '../utils/styles/theme.utils';
+import { globalStyle } from '../styles/globals.styles';
+import { store } from '../store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +15,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="Primelab next.js app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
       <Global styles={globalStyle} />
     </ThemeProvider>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from '@emotion/react';
 import {
   Avatar,
   ListItem,
@@ -8,13 +7,9 @@ import {
   IconButton
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { CollectibleItemProps } from '../../../types/global.types';
 
-interface CollectibleItemProps {
-  title: string;
-  subTitle: string;
-};
-
-const CollectibleItem = ({
+export const CollectibleItem = ({
   title,
   subTitle,
 }: CollectibleItemProps) => {
@@ -32,23 +27,4 @@ const CollectibleItem = ({
       <ListItemText primary={title} secondary={subTitle} />
     </ListItem>
   )
-};
-
-export default CollectibleItem;
-
-const styles = {
-  card: css`
-    padding: 9px;
-    background: #885FFF;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-  `,
-  title: css`
-    font-family: Manrope;
-    font-size: 16px;
-    line-height: 22px;
-    text-align: center;
-    color: #FFFFFF;
-  `,
 };

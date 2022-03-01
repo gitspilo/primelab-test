@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { css } from '@emotion/react';
 import {
   Container,
   Stack,
   Typography,
 } from '@mui/material';
-import { images } from '../styles/theme';
+import { images } from '../utils/styles/theme.utils';
+import { styles } from './index.styles';
 
 const Splash: NextPage = () => {
   const router = useRouter();
@@ -19,7 +19,7 @@ const Splash: NextPage = () => {
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <Container>
@@ -54,31 +54,6 @@ const Splash: NextPage = () => {
       </div>
     </Container>
   )
-};
-
-const styles = {
-  main: css`
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  `,
-  typo: css`
-    font-family: Manrope;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 20px;
-    color: #FCFCFC;
-    opacity: 0.9;
-  `,
-  bottom: css`
-    position: absolute;
-    bottom: 40px;
-    text-align: center;
-  `
 };
 
 export default Splash;

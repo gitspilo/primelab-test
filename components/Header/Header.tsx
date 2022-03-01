@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import {
@@ -17,13 +16,11 @@ import {
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import DownloadRoundedIcon from '@mui/icons-material/DownloadRounded';
-import { images } from '../styles/theme';
+import { HeaderProps } from '../../types/global.types';
+import { images } from '../../utils/styles/theme.utils';
+import { styles } from './Header.styles';
 
-interface HeaderProps {
-  isBack?: boolean;
-};
-
-const Header = ({ isBack = false }: HeaderProps) => {
+export const Header = ({ isBack = false }: HeaderProps) => {
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -166,17 +163,4 @@ const Header = ({ isBack = false }: HeaderProps) => {
       </Stack>
     </Container>
   )
-};
-
-export default Header;
-
-const styles = {
-  header: css`
-    height: 71px;
-    background: #F5F5F5;
-    padding-top: 16px;
-  `,
-  backButton: css`
-    margin-right: 15px;
-  `
 };

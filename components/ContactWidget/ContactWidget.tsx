@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from '@emotion/react';
 import {
   Card,
   Stack,
@@ -9,9 +8,10 @@ import {
   AvatarGroup
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { images } from '../styles/theme';
+import { images } from '../../utils/styles/theme.utils';
+import { styles } from './ContactWidget.styles';
 
-const Contact = () => {
+export const ContactWidget = () => {
   return (
     <Card css={styles.card}>
       <Stack
@@ -37,23 +37,4 @@ const Contact = () => {
       </Stack>
     </Card>
   )
-};
-
-export default Contact;
-
-const styles = {
-  card: css`
-    padding: 9px;
-    background: #EAEFFF;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-  `,
-  title: css`
-    font-family: Manrope;
-    font-size: 16px;
-    line-height: 22px;
-    text-align: center;
-    color: #414047;
-  `,
 };

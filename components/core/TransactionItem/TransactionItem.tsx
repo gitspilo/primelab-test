@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from '@emotion/react';
 import {
   ListItem,
   ListItemIcon,
@@ -8,16 +7,11 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { cx } from "../styles/styling";
+import { TransactionItemProps } from '../../../types/global.types';
+import { cx } from "../../../utils/styles/styles.utils";
+import { styles } from './TransactionItem.styles';
 
-interface TransactionItemProps {
-  title: string;
-  subTitle: string;
-  timeLine: string;
-  isIncoming?: boolean;
-};
-
-const TransactionItem = ({
+export const TransactionItem = ({
   title,
   subTitle,
   timeLine,
@@ -41,29 +35,4 @@ const TransactionItem = ({
       />
     </ListItem>
   )
-};
-
-export default TransactionItem;
-
-const styles = {
-  card: css`
-    padding: 9px;
-    background: #885FFF;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-  `,
-  title: css`
-    font-family: Manrope;
-    font-size: 16px;
-    line-height: 22px;
-    text-align: center;
-    color: #FFFFFF;
-  `,
-  blue: css`
-    color: #885FFF;
-  `,
-  green: css`
-    color: #3BD0AC;
-  `
 };
