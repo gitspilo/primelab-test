@@ -15,7 +15,9 @@
     "jsx": "preserve",
     "incremental": true,
     "types": [
-      "@emotion/react/types/css-prop"
+      "mocha",
+      "cypress",
+      "@emotion/react/types/css-prop",
     ]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -4,9 +4,9 @@
  * @param {Object.<string, boolean>} choices
  * @returns {Array<SerializedStyles>}
  */
-export function cx(styles, choices) {
-  let themedStyles = [];
-  let basicStyles = [];
+export function cx(styles: any, choices: any) {
+  let themedStyles: any = [];
+  let basicStyles: any = [];
 
   for (const [name, style] of Object.entries(styles)) {
     if (choices && !choices[name]) continue;
@@ -15,7 +15,7 @@ export function cx(styles, choices) {
   }
 
   if (themedStyles.length) {
-    return theme => themedStyles.map(style => style(theme)).concat(basicStyles);
+    return (theme: any) => themedStyles.map((style: any) => style(theme)).concat(basicStyles);
   } else {
     return basicStyles;
   }

@@ -19,3 +19,18 @@ export interface TransactionItemProps {
 export interface HeaderProps {
   isBack?: boolean;
 };
+
+export interface Transaction {
+  id: number,
+  title: string,
+  subTitle: string,
+  time: string,
+  send?: boolean,
+  receiced?: boolean,
+};
+
+export interface Collection {
+  id: number,
+  title: string,
+  subTitle: string,
+};

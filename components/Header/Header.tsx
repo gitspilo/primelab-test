@@ -16,12 +16,14 @@ import {
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import DownloadRoundedIcon from '@mui/icons-material/DownloadRounded';
+import { useAppSelector } from '../../hooks/store/useReduxHook';
 import { HeaderProps } from '../../types/global.types';
-import { images } from '../../utils/styles/theme.utils';
+import { images } from '../../constants/images.contants';
 import { styles } from './Header.styles';
 
 export const Header = ({ isBack = false }: HeaderProps) => {
   const router = useRouter();
+  const user = useAppSelector((state) => state.user.user);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -77,7 +79,7 @@ export const Header = ({ isBack = false }: HeaderProps) => {
           <Chip
             clickable
             avatar={<Avatar alt="Natacha" src={images.avatar1} />}
-            label="Johndoe.near"
+            label={user?.name}
             variant="outlined"
             onClick={handleClick}
             onDelete={() => { }}

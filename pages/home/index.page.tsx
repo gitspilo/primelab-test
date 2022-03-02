@@ -1,26 +1,44 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import {
   Container,
   Stack,
   Tab,
   Tabs,
-  Box,
   List,
   ToggleButton,
   ToggleButtonGroup
 } from '@mui/material';
 import Header from '../../components/Header';
-import ContactWidget from '../../components/ContactWidget';
-import AppWidget from '../../components/AppWidget';
-import NftWidget from '../../components/NftWidget';
-import CollectibleItem from '../../components/core/CollectibleItem';
-import TransactionItem from '../../components/core/TransactionItem';
-import { TabPanelProps } from  '../../types/global.types';
+import ContactWidget from '../../modules/ContactWidget';
+import AppWidget from '../../modules/AppWidget';
+import NftWidget from '../../modules/NftWidget';
+import CollectibleItem from '../../components/CollectibleItem';
+import TransactionItem from '../../components/TransactionItem';
+import TabPanel from '../../components/Tabpanel';
+import { useAppDispatch } from '../../hooks/store/useReduxHook';
+import { getUser } from '../../store/users/actions';
+import {
+  Transaction,
+  Collection
+} from  '../../types/global.types';
+import {
+  TRANSACTION_MOCK_DATA,
+  COLLECTION_MOCK_DATA
+} from '../../mocks/nfts/nfts.mock';
 
 const Home: NextPage = () => {
+  const dispatch = useAppDispatch();
   const [value, setValue] = useState(0);
   const [alignment, setAlignment] = useState('all');
+
+  useEffect(() => {
+    dispatch(getUser({
+        name: 'Piyush Kakadiya',
+        email: 'piyush.kakadiya@primelab.io'
+      }
+    ));
+  }, []);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -32,6 +50,14 @@ const Home: NextPage = () => {
   ) => {
     setAlignment(newAlignment);
   };
+
+  const a11yProps = (index: number) => {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  };
+
 
   return (
     <Fragment>
@@ -55,11 +81,15 @@ const Home: NextPage = () => {
         </Tabs>
         <TabPanel value={value} index={0}>
           <List>
-            <CollectibleItem title='Digital Ninja' subTitle='by johndoe.near' />
-            <CollectibleItem title='Panda' subTitle='by whitegoose497' />
-            <CollectibleItem title='Panda' subTitle='by whitegoose497' />
-            <CollectibleItem title='Panda' subTitle='by whitegoose497' />
-            <CollectibleItem title='Panda' subTitle='by whitegoose497' />
+            {
+              COLLECTION_MOCK_DATA.map((collection: Collection) => (
+                <CollectibleItem
+                  key={collection.id}
+                  title={collection.title}
+                  subTitle={collection.subTitle}
+                />
+              ))
+            }
           </List>
         </TabPanel>
         <TabPanel value={value} index={1}>
@@ -76,10 +106,17 @@ const Home: NextPage = () => {
             </ToggleButtonGroup>
           </Stack>
           <List>
-            <TransactionItem title='0.456 NEAR' subTitle='Sent to devon.near' timeLine="3 days ago" isIncoming />
-            <TransactionItem title='#13893' subTitle='Recieved from ' timeLine="3 days ago" />
-            <TransactionItem title='0.456 NEAR' subTitle='Sent to devon.near' timeLine="3 days ago" isIncoming />
-            <TransactionItem title='#13893' subTitle='Recieved from ' timeLine="3 days ago" />
+            {
+              TRANSACTION_MOCK_DATA.map((transaction: Transaction) => (
+                <TransactionItem
+                  key={transaction.id}
+                  title={transaction.title}
+                  subTitle={transaction.subTitle}
+                  timeLine={transaction.time}
+                  isIncoming={transaction.receiced}
+                />    
+              ))
+            }
           </List>
         </TabPanel>
       </Container>
@@ -88,30 +125,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box>
-          {children}
-        </Box>
-      )}
-    </div>
-  );
-};
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-};

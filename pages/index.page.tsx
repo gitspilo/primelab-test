@@ -7,7 +7,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { images } from '../utils/styles/theme.utils';
+import { images } from '../constants/images.contants';
 import { styles } from './index.styles';
 
 const Splash: NextPage = () => {

@@ -1,8 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CounterState } from './types';
+import { createSlice } from '@reduxjs/toolkit';
+import { UserState } from './types';
 
-const initialState: CounterState = {
+const initialState: UserState = {
   user: null,
+  token: null,
+  isAuthenticated: false,
 };
 
 export const userSlice = createSlice({
